@@ -1,0 +1,43 @@
+[
+  {
+    "firstname": "Leila",
+    "lastname": "Hokki",
+    "phones": [
+      { "type": "home", "number": "123467" },
+      { "type": "work", "number": "897552" },
+      { "type": "mobile", "number": "98252" }
+    ]
+  },
+  {
+    "firstname": "Matt",
+    "lastname": "River",
+    "phones": [
+      {
+        "type": "home",
+        "number": "876524"
+      },
+      {
+        "type": "work",
+        "number": "777777"
+      },
+      {
+        "type": "mobile",
+        "number": "6555433"
+      }
+    ]
+  },
+  {
+    "firstname": "Vera",
+    "lastname": "Riverson",
+    "phones": [
+      {
+        "type": "work",
+        "number": "777887"
+      },
+      {
+        "type": "mobile",
+        "number": "6555433"
+      }
+    ]
+  }
+]
