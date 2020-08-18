@@ -51,3 +51,6 @@ exports.getAllNumbersByType = (type) => {
   }
   return numbersFound;
 };
+
+//Solution 4
+exports.getAllNumbers = () => phoneRegister;
