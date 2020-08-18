@@ -1,7 +1,7 @@
 "use strict";
 const persons = require("./phones.json");
 
-//Print fname and last names of persons in the json file
+//Print fname and last names of each of the persons in the json file
 for (let person of persons) {
   console.log(`${person.firstname} ${person.lastname}`);
 
