@@ -54,3 +54,18 @@ exports.getAllNumbersByType = (type) => {
 
 //Solution 4
 exports.getAllNumbers = () => phoneRegister;
+
+//Solution 5
+exports.getName = (number) => {
+  for (let person of phoneRegister) {
+    for (let phone of person.phones) {
+      if (phone.number === number) {
+        return {
+          firstname: person.firstname,
+          lastname: person.lastname,
+        };
+      }
+    }
+  }
+  return null;
+};
