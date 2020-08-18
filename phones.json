@@ -25,5 +25,19 @@
         "number": "6555433"
       }
     ]
+  },
+  {
+    "firstname": "Vera",
+    "lastname": "Riverson",
+    "phones": [
+      {
+        "type": "work",
+        "number": "777887"
+      },
+      {
+        "type": "mobile",
+        "number": "6555433"
+      }
+    ]
   }
 ]
