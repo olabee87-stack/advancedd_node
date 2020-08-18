@@ -2,14 +2,7 @@
 
 const phoneRegister = require("./phones.json");
 
-// const getTypes = (type) => {
-//   for (let phoneType of phoneTypes) {
-//     return phoneType;
-//   }
-// };
-
-// console.log(getTypes());
-//Solution one
+//Solution one - Get types of numbers
 exports.getTypes = () => {
   let types = [];
   for (let person of phoneRegister) {
@@ -39,4 +32,22 @@ exports.getNumbersByType = (firstname, lastname, type) => {
   } else {
     throw new Error("Missing Parameter");
   }
+};
+
+//Solution 3
+exports.getAllNumbersByType = (type) => {
+  if (!type) throw new Error("Missing parameter");
+  const numbersFound = [];
+  for (let person of phoneRegister) {
+    for (let phone of person.phones) {
+      if (phone.type === type) {
+        numbersFound.push({
+          firstname: person.firstname,
+          lastname: person.lastname,
+          number: { type: phone.type, tel: phone.number },
+        });
+      }
+    }
+  }
+  return numbersFound;
 };
