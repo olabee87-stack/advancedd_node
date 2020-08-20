@@ -14,6 +14,12 @@ const get = (key, value) => {
   return found;
 };
 
+//Get all persons without param
+const getAll = () => {
+  return persons;
+};
+
 module.exports = {
   get,
+  getAll,
 };
