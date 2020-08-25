@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
     result = get("age", age);
   }
   res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-  res.end(createWebPage(result));
+  res.end(createWebPage(result)); //send data as a webpage
 });
 
 server.listen(port, host, () => {
