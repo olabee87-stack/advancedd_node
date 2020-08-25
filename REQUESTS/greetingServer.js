@@ -14,6 +14,14 @@ const server = http.createServer((req, res) => {
   res.end(`<h1>Hi ${name} !</h1>`);
 });
 
+// const server = http.createServer((req, res) => {
+//     const urlData = url.parse({url, json:true});
+//     console.log(urlData.query);
+//     const name = urlData.query.name;
+//     res.writeHead(200, { "Content-Type": "text/html" });
+//     res.end(`<h1>Hi ${name} !</h1>`);
+//   });
+
 server.listen(port, host, () => {
   console.log(`Server ${host} listening port ${port}`);
 });

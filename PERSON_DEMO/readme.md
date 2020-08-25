@@ -12,6 +12,12 @@ http://localhost:3005/persons/firstname?name=Matt
 http://localhost:3005/persons/lastname?name=River
 ```
 
+## search by age
+
+```
+http://localhost:3005/persons/age?age=30
+```
+
 ## get all persons
 
 ```
