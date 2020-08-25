@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persons</title>
+
+    <style>
+      label {
+        font-weight: bold;
+      }
+      html {
+        background-color: lightgoldenrodyellow;
+      }
+      .hidden {
+        display: none;
+      }
+      main {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+      }
+
+      section {
+        margin-top: 1em;
+        padding: 1em;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+      thead {
+        background-color: lightgreen;
+      }
+
+      td {
+        background-color: lightsteelblue;
+      }
+
+      td,
+      th,
+      thead {
+        border: 1px solid black;
+        padding: 4px;
+      }
+    </style>
+
+    <script>
+      (function () {
+        let resultSet;
+        let resultarea;
+        let key;
+        let search;
+        let messagearea;
+
+        const serverPath = "http//localhost:3009/persons";
+
+        const showResultSet = () => resultset.classList.remove("hidden");
+        const hideResultSet = () => resultset.classList.add("hidden");
+        const showMessage = () => messagearea.classList.remove("hidden");
+        const hideMessage = () => messagearea.classList.add("hidden");
+
+        document.addEventListener("DOMContentLoaded", init);
+
+        function init() {
+          resultset = document.getElementById("resultset");
+          resultarea = document.getElementById("resultarea");
+          key = document.getElementById("key");
+          search = document.getElementById("search");
+          messagearea = document.getElementById("messagearea");
+
+          document.getElementById("submit").addEventListener("click", submit);
+          key.addEventListener("focus", clear);
+
+          clear();
+        }
+
+        function clear() {
+          key.value = "";
+          search.value = "";
+          hideMessage();
+          hideResultSet();
+          key.focus();
+        }
+
+        async function submit() {
+          const searchKey = key.value;
+          const value = search.value;
+
+          try {
+            const uri = searchKey
+              ? `${serverPath}/${searchKey}?name=${value}`
+              : `${serverPath}`;
+            const result = await fetch(uri, { mode: "cors" });
+            const personData = await result.json();
+            updatePage(personData);
+          } catch (err) {
+            showError(err.message);
+          }
+        }
+
+        function showError(message) {
+          messagearea.innerHTML = `<p>${message}</p>`;
+          hideResultSet();
+          showMessage();
+        }
+
+        function updatePage(searchResult) {
+          if (searchResult.message) {
+            showError(searchResult.message);
+          } else {
+            let htmlString = "";
+            for (let person of searchResult) {
+              htmlString += `<tr>
+    <td>${person.firstname}</td>
+    <td>${person.lastname}</td>
+    <td>${person.age}</td>
+<tr>\n`;
+            }
+            resultarea.innerHTML = htmlString;
+            showResultSet();
+            hideMessage();
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Testing Demo Search Results</h1>
+      <p>
+        <label for="key">Key:</label>
+        <input id="key" type="text" />
+      </p>
+      <p>
+        <label for="search">Value:</label>
+        <input id="search" type="text" />
+      </p>
+      <button id="submit">Submit</button>
+      <section id="resultset">
+        <table>
+          <thead>
+            <tr>
+              <th>First name</th>
+              <th>Second name</th>
+              <th>Age</th>
+            </tr>
+          </thead>
+          <tbody id="resultarea"></tbody>
+        </table>
+      </section>
+      <section id="messagearea"></section>
+    </main>
+  </body>
+</html>
