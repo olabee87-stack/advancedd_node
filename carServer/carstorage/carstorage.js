@@ -3,7 +3,7 @@
 const cars = require("./cars.json");
 
 module.exports = (key, value) => {
-  const found = [];
+  let found = [];
   //   let found = []; - Version 2
 
   //Check if keys are available an
@@ -15,8 +15,8 @@ module.exports = (key, value) => {
       }
     }
   } else {
-    found.push(...cars);
-    // found = cars; - Version 2
+    // found.push(...cars);
+    found = cars;
   }
   return found;
 };

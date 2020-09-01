@@ -1,5 +1,5 @@
 "use strict";
-/*eslint-disable no-undef*/
+
 (function () {
   let searchCriterion;
   document.addEventListener("DOMContentLoaded", init);
