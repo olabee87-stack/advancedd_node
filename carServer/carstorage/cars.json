@@ -1,0 +1,6 @@
+[
+  { "model": "Kaara", "licence": "XYZ-789" },
+  { "model": "Hoppa", "licence": "ABC-1" },
+  { "model": "Kaara", "licence": "XYZ-123" },
+  { "model": "Hoppa", "licence": "DFG-12" }
+]
