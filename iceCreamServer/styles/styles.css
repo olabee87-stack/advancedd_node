@@ -1,5 +1,5 @@
 h1 {
-  color: pink;
+  color: green;
 }
 main {
   display: grid;
@@ -12,5 +12,11 @@ section div {
 .error {
   margin-top: 1em;
   padding: 1em;
-  border: dashed red 1px;
+  border: dashed green 1px;
+}
+
+img {
+  width: 250px;
+  border: 2px solid grey;
+  box-shadow: 0 0 5px grey;
 }

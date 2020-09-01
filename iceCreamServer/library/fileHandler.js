@@ -4,16 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const MIMETYPES = {
-  ".html": { type: "text/html", encoding: "utf-8" },
-  ".js": { type: "text/javascript", encoding: "utf-8" },
-  ".css": { type: "text/css", encoding: "utf-8" },
-  ".json": { type: "application/json", encoding: "utf-8" },
-  ".png": { type: "image/png", encoding: "binary" },
-  ".jpg": { type: "image/jpg", encoding: "binary" },
-  ".gif": { type: "image/gif", encoding: "binary" },
-  ".ico": { type: "image/vnd.microsoft.icon", encoding: "binary" },
-};
+const MIMETYPES = require("./mimetypes.json");
 
 //READ FUNCTION
 const read = (filepath) => {
@@ -70,5 +61,3 @@ const isIn = (route, ...routes) => {
 };
 
 module.exports = { read, send, sendJSON, sendError, isIn };
-
-//COPIED

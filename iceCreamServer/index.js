@@ -1,3 +1,5 @@
+//SERVER TO SERVE IMAGES, JS, STYLES, etc
+
 "use strict";
 const http = require("http");
 const url = require("url");
@@ -17,7 +19,7 @@ const { read, send, sendJSON, sendError, isIn } = require(path.join(
 //Paths to serve
 const homePath = path.join(__dirname, "home.html");
 const jsonPath = path.join(__dirname, "iceCream.json");
-const resourceRoutes = ["/favicon", "/styles", "/js", "/images"];
+const resourceRoutes = ["/favicon", "/styles/", "/js/", "/images/"];
 
 //Server
 const server = http.createServer(async (req, res) => {

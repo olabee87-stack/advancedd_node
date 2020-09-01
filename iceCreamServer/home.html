@@ -32,8 +32,21 @@ type="image/vnd.microsoft.icon"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ice cream</title>
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+
+    <script src="/js/update.js"></script>
+    <!-- <script src="/js/update.js"></script> -->
   </head>
   <body>
-    <h1>Ice Cream Seller</h1>
+    <main>
+      <h1>Select an ice cream</h1>
+      <div id="options">
+        <label>Choose:</label>
+        <select id="iceCreamList">
+          <option value=""></option>
+        </select>
+      </div>
+      <section id="resultarea"></section>
+    </main>
   </body>
 </html>

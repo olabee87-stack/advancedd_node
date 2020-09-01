@@ -13,5 +13,15 @@
     "name": "Blueberry",
     "price": 3,
     "image": "blueberry.jpg"
+  },
+  "mango": {
+    "name": "Mango",
+    "price": 4,
+    "image": "mango.jpg"
+  },
+  "banana": {
+    "name": "Banana",
+    "price": 4,
+    "image": "banana-ice.jpg"
   }
 }
