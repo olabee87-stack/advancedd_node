@@ -9,10 +9,8 @@ const MIMETYPES = require("./mimetypes.json");
 //READ FUNCTION
 const read = (filepath) => {
   let extension = path.extname(filepath).toLowerCase();
-  //read each object in the mime
-  //the type allows for download
   let mime = MIMETYPES[extension] || {
-    //default is octet-stream mime is non-existent
+    //default is octet-stream mime if non-existent
     type: "application/octet-stream",
     encoding: "binary",
   };
@@ -46,9 +44,11 @@ const sendJSON = (res, jsonResource) => {
   res.end(jsonData);
 };
 
-//SEND ERROR FUNCTION
-const sendError = (res, message) => {
-  res.writeHead(404, { "Content-Type": "application/json; charset=utf8" });
+//SEND STATUSCODE FUNCTION
+const sendStatus = (res, message, statusCode = 200) => {
+  res.writeHead(statusCode, {
+    "Content-Type": "application/json; charset=utf8",
+  });
   res.end(JSON.stringify({ message }));
 };
 
@@ -60,4 +60,39 @@ const isIn = (route, ...routes) => {
   return false;
 };
 
-module.exports = { read, send, sendJSON, sendError, isIn };
+//POST REQUEST LOGIC
+const getPostData = (req, contentType) =>
+  new Promise((resolve, reject) => {
+    if (req.headers["content-type"] !== contentType) {
+      reject("Wrong Content-Type");
+    } else {
+      let parse;
+      if (contentType === "application/x-www-form-urlencoded") {
+        parse = require("querystring").parse;
+      } else if (contentType === "application/json") {
+        parse = JSON.parse;
+      }
+      let databuffer = [];
+      req.on("data", (messageFragment) => databuffer.push(messageFragment));
+      req.on("end", () => resolve(parse(Buffer.concat(databuffer).toString)));
+      req.on("error", () =>
+        reject("An error occured during the data transfer...")
+      );
+    }
+  });
+
+//Redirect Logic
+const redirectError = (res, message) => {
+  res.writeHead(303, { Location: `/error?message=${message}` });
+  res.end();
+};
+
+module.exports = {
+  read,
+  send,
+  sendJSON,
+  sendStatus,
+  isIn,
+  getPostData,
+  redirectError,
+};
