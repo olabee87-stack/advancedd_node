@@ -1,11 +1,13 @@
 "use strict";
 /*eslint-disable no-unused-vars*/
-let resultarea;
-document.addEventListener("DOMContentLoaded", init);
-function init() {
-  resultarea = document.getElementById("resultarea");
-}
+// let resultarea;
+// document.addEventListener("DOMContentLoaded", init);
+// function init() {
+//   resultarea = document.getElementById("resultarea");
+// }
+
 function updatePage(cars) {
+  let resultarea = document.getElementById("resultarea");
   resultarea.innerHTML = "";
   const ul = document.createElement("ul");
   for (let car of cars) {

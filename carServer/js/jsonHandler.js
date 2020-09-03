@@ -11,7 +11,7 @@
     try {
       const result = await fetch("/jsonencoded", {
         method: "POST",
-        body: JSON.stringify({ licence: searchCriterion.value }),
+        body: JSON.stringify({ licence: searchCriterion.value }), //send data to server
         headers: {
           "Content-Type": "application/json",
         },

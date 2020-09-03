@@ -9,7 +9,7 @@ const http = require("http");
 //   "library', routeHandlerGet"
 // ));
 
-//Require all libraries
+//@Require all libraries
 //@ (__dirname) - passed here as a param defined in rhg.js and rhp.js as (basedir)
 const handleGetRequests = require("./library/routeHandlerGet.js")(__dirname);
 const handlePostRequests = require("./library/routeHandlerPost.js")(__dirname);
