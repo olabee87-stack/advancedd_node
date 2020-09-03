@@ -4,5 +4,5 @@
   { "model": "Kaara", "licence": "XYZ-123" },
   { "model": "Hoppa", "licence": "DFG-12" },
   { "model": "Ferrari", "licence": "BEE-87" },
-  { "model": "Lamborghini", "licence": "BISI-777" }
+  { "model": "Lamborghini", "licence": "BISI-777", "image": "car.jpg" }
 ]
