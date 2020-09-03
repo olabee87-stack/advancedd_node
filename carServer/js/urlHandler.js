@@ -1,5 +1,7 @@
 "use strict";
 /*eslint-disable no-undef*/
+
+// @ use file in getUrl.html
 (function () {
   let searchCriterion;
   document.addEventListener("DOMContentLoaded", init);

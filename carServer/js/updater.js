@@ -6,6 +6,7 @@
 //   resultarea = document.getElementById("resultarea");
 // }
 
+//@ use file in the getJson.html & getUrl.html
 function updatePage(cars) {
   let resultarea = document.getElementById("resultarea");
   resultarea.innerHTML = "";
