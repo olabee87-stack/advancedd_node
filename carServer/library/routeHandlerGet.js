@@ -6,13 +6,17 @@ const url = require("url");
 const { read, send, sendJson, isIn, redirectError } = require("./handler.js");
 
 //@paths to serve based
+//@ baseDir - param to on to index.js (__dirname) / dir of the index.js
 module.exports = (baseDir) => {
+  const config = require(path.join(baseDir, "config.json")); //example with config
   const get = require(path.join(baseDir, "carstorage", "carstorage.js"));
-  const menuPath = path.join(baseDir, "webPages", "menu.html");
+  // const menuPath = path.join(baseDir, "webPages", "menu.html");
+  const menuPath = path.join(baseDir, config.WEBPAGES, config.MENU);
   const errPath = path.join(baseDir, "webPages", "errorPage.html");
   const formPath = path.join(baseDir, "webPages", "form.html");
   const resourcePaths = ["/favicon", "/styles/", "/images/", "/js/"];
-  const webPagePaths = ["/webPages/"];
+  // const webPagePaths = ["/webPages/"];
+  const webPagePaths = [`/${config.WEBPAGES}/`]; //example with config
   return async (req, res) => {
     const route = decodeURIComponent(url.parse(req.url).pathname);
     try {
