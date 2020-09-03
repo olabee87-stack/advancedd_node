@@ -1,4 +1,6 @@
 "use strict";
+
+//@use in getSelection.html
 (function () {
   let carSelection;
   document.addEventListener("DOMContentLoaded", init);

@@ -13,12 +13,12 @@
     try {
       const result = await fetch("/urlencoded", {
         method: "POST",
-        body: `licence=${searchCriterion.value}`,
+        body: `licence=${searchCriterion.value}`, //url param
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
       });
-      updatePage(await result.json());
+      updatePage(await result.json()); //send back in json format
     } catch (err) {
       showError(err);
     }
