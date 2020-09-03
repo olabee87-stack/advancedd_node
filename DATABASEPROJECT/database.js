@@ -1,6 +1,7 @@
 "use strict";
 
 const mysql = require("mysql");
+// const mysqlCon = require("@mysql/xdevapi");
 
 module.exports = class Database {
   constructor(options) {
@@ -10,7 +11,7 @@ module.exports = class Database {
     return new Promise(async (resolve, reject) => {
       let newConnection = false;
       if (!connection) {
-        connection = await mariadb.createConnection(this.options);
+        connection = await mysql.createConnection(this.options);
         newConnection = true;
       }
       try {
@@ -19,7 +20,7 @@ module.exports = class Database {
           reject(new Error("QueryError"));
         } else if (typeof queryResult.affectedRows === "undefined") {
           //resultset of the select query
-          delete queryResult.meta;
+          delete queryResult.meta; //clutters the code, may be removed
           resolve({ queryResult, resultSet: true });
         } else {
           resolve({
@@ -34,7 +35,7 @@ module.exports = class Database {
       } catch (error) {
         reject(new Error("SQL-error:" + error.message));
       } finally {
-        if (connection && newConnection) connection.end();
+        if (connection && newConnection) connection.end(); //closes the connection
       }
     });
   }

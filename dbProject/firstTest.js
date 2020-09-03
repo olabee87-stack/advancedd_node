@@ -1,6 +1,6 @@
 "use strict";
 
-const MariaDB = require("./database");
+const MySQL = require("./database");
 
 const options = {
   host: "localhost", //Mariadb host
@@ -11,13 +11,13 @@ const options = {
 };
 
 //Creating an instance of Maria db and taking the declared options as a parameter
-const db = new MariaDB(options);
+const db = new MySQL(options);
 // console.log("db", db.options);
 
 (async () => {
   try {
     const result = await db.doQuery("select * from employee");
-    if (result.resutSet) {
+    if (result.resultSet) {
       for (let person of result.queryResult) {
         console.log(
           `${person.firstname} ${person.lastname} Dept: ${person.department}`

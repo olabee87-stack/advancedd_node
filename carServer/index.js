@@ -2,6 +2,13 @@
 
 const http = require("http");
 
+//@ Can use in place of line 13 (another example)
+// const path = require("path");
+// const handleGetRequests = require(path.join(
+//   __dirname,
+//   "library', routeHandlerGet"
+// ));
+
 //Require all libraries
 const handleGetRequests = require("./library/routeHandlerGet.js")(__dirname);
 const handlePostRequests = require("./library/routeHandlerPost.js")(__dirname);
@@ -26,3 +33,14 @@ const server = http.createServer(async (req, res) => {
 server.listen(port, host, () =>
   console.log(`Server ${host} listens port ${port}`)
 );
+
+//JUST RANDOM
+
+//@check computer info
+// console.log(process);
+// console.log(process.env);
+// console.log(process.env.os);
+
+//@check computer info keys/values only
+// console.log(Object.keys(process.env));
+// console.log(Object.values(process.env));

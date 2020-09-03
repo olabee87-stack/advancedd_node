@@ -1,7 +1,11 @@
 "use strict";
 const path = require("path");
 const url = require("url");
+
+//@ import all handers
 const { read, send, sendJson, isIn, redirectError } = require("./handler.js");
+
+//@paths to serve based
 module.exports = (baseDir) => {
   const get = require(path.join(baseDir, "carstorage", "carstorage.js"));
   const menuPath = path.join(baseDir, "webPages", "menu.html");
