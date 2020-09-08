@@ -1,0 +1,23 @@
+[
+  {
+    "employeeId": 1,
+    "firstname": "Leila",
+    "lastname": "Hokki",
+    "department": "ict",
+    "salary": 5000
+  },
+  {
+    "employeeId": 2,
+    "firstname": "Matt",
+    "lastname": "River",
+    "department": "admin",
+    "salary": 7000
+  },
+  {
+    "employeeId": 3,
+    "firstname": "Sharon",
+    "lastname": "Stone",
+    "department": "mgt",
+    "salary": 10000
+  }
+]
