@@ -26,8 +26,10 @@ module.exports = (baseDir) => {
         send(res, result);
       } else if (route === "/form") {
         let result = await read(formPath);
-        result.fileData = result.fileData.replace("**MODEL**", "");
+        // console.log(result);
+        result.fileData = result.fileData.replace("**MODEL**", ""); //replace 'Model' with emp string
         result.fileData = result.fileData.replace("**LICENCE**", "");
+        // console.log(result.fileData);
         send(res, result);
       } else if (isIn(route, ...webPagePaths, ...resourcePaths)) {
         let result = await read(path.join(baseDir, route));

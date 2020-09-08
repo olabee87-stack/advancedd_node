@@ -2,7 +2,7 @@
  background-image: url("/inages/car.png");
 } */
 body {
-  background-color: cornsilk;
+  background-color: powderblue;
 }
 main,
 #search,
@@ -45,7 +45,7 @@ button {
   box-shadow: 0.2em 0.2em 0.3em rgb(0, 0, 0);
   margin-bottom: 0.3em;
   margin-top: 0.3em;
-  background-color: brown;
+  background-color: palevioletred;
   color: white;
 }
 label {
