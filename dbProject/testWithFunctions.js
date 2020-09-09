@@ -12,111 +12,106 @@ const db = new Database({
 
 run();
 
-//FUNCTION DEFINITIONS
-//Print workers
 function printWorkers(employees) {
   for (let person of employees) {
+    const department = person.department
+      ? `department is ${person.department}`
+      : "no department specified";
     console.log(
-      `${person.employeeId} ${person.firstname} ${person.lastname} Dept: ${person.department}`
+      `${person.employeeId}: ${person.firstname} ${person.lastname}, ` +
+        `${department}, salary is ${person.salary} €`
     );
   }
 }
-
-//Get the entire table function
 async function getAll() {
   try {
     const result = await db.doQuery("select * from employee");
     if (result.resultSet) {
       printWorkers(result.queryResult);
     }
-  } catch (error) {
-    console.log(error.message);
+  } catch (err) {
+    console.log(err.message);
   }
 }
-
-//get specific employee
 async function get(employeeId) {
   try {
-    const result = await db.doQuery("select * from employeeId=?", [employeeId]);
+    const result = await db.doQuery(
+      "select * from employee where employeeId=?",
+      [employeeId]
+    );
     printWorkers(result.queryResult);
-  } catch (error) {
-    console.log(error.message);
+  } catch (err) {
+    console.log(err.message);
   }
 }
 
-//Add function
-// async function add(person) {
-//   try {
-//     const parameters = [
-//       person.employeeId,
-//       person.firstname,
-//       person.lastname,
-//       person.department,
-//       person.salary,
-//     ];
-
-//     const sql ='insert into employee values(?,?,?,?,?)';
-
-// const status = await db.doQuery(sql, parameters);
-// console.log('Status:', status);
-
-// } catch(err) {
-//     console.log(err.message);
-//   }
-// }
-
-//Update function
-async function update(person) {
-    try {
-      const parameters = [
-
-        person.firstname,
-        person.lastname,
-        person.department,
-        person.salary,
-        person.employeeId,
-      ];
-
-      const sql ="update employee set firstname=?, lastname=?, department=?, salary=? where employeeId=?",
-
-//   const status = await db.doQuery(sql, parameters);
-//   console.log('Update', status);
-
-    } catch (error) {
-      console.log(error.message);
-    }
+async function add(person) {
+  try {
+    const parameters = [
+      person.employeeId,
+      person.firstname,
+      person.lastname,
+      person.department,
+      person.salary,
+    ];
+    const sql = "insert into employee values(?,?,?,?,?)";
+    const status = await db.doQuery(sql, parameters);
+    console.log("Status:", status);
+  } catch (err) {
+    console.log(err.message);
   }
+}
+async function remove(id) {
+  try {
+    const status = await db.doQuery("delete from employee where employeeId=?", [
+      id,
+    ]);
+    console.log("Remove status:", status);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+//We assume that employeeId doesn't change, so it is used in the criterion
+async function update(person) {
+  const sql =
+    "update employee set firstname=?, lastname=?, " +
+    "department=?, salary=? where employeeId=?";
+  try {
+    const parameters = [
+      person.firstname,
+      person.lastname,
+      person.department,
+      person.salary,
+      person.employeeId,
+    ];
+    const status = await db.doQuery(sql, parameters);
+    console.log("Change status:", status);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
 
-// async function remove(employeeId) {
-// try {
-//     const status = await db.doQuery('delete from employeeId where employeeId=?', [employeeId]);
-//     console.log('remove status:', status )
-// } catch (error) {
-//     console.log(error.message)
-// }
-// }
-
+//main function
 async function run() {
   await getAll();
-  console.log("#############");
-  //   await get(136);
-  //   await get(1);
-  //   await add({
-  //     employeeId: 200,
-  //     firstname: "Mary",
-  //     lastname: "Jones",
-  //     department: "secr",
-  //     salary: 9999.99,
-  //   });
-  //   await getAll();
-  //   await remove(200);
-  //   await getAll();
-    await update({
-      employeeId: 3,
-      firstname: "Mary",
-      lastname: "Jones",
-      department: "secr",
-      salary: 9999.99,
-    });
-    await getAll();
+  console.log("######");
+  await get(1);
+  await add({
+    employeeId: 100,
+    firstname: "Anna",
+    lastname: "Rodriguez",
+    department: "ict",
+    salary: 3500,
+  });
+  await getAll();
+  await update({
+    employeeId: 100,
+    firstname: "Annax",
+    lastname: "Rodriguezx",
+    department: "ictx",
+    salary: 3500.99,
+  });
+  await getAll();
+  await remove(100);
+  await getAll();
 }

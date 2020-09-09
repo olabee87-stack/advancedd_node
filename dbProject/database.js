@@ -1,6 +1,6 @@
-// "use strict";
+"use strict";
 
-// const mariadb = require("mariadb");
+// const mysql = require("mysql");
 
 // module.exports = class Database {
 //   constructor(options) {
@@ -12,7 +12,7 @@
 //       let newConnection = false; //for transactions
 //       //create new connection if connection is missing
 //       if (!connection) {
-//         connection = await mariadb.createConnection(this.options);
+//         connection = await mysql.createConnection(this.options);
 //         newConnection = true; //specifying that the connection is new
 //       }
 //       try {
