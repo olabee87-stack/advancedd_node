@@ -14,14 +14,18 @@ global.writeLog = new Console({ stdout: output, stderr: output }).log; //everyth
 //################
 
 const port = process.env.PORT || 3006;
-
 const host = process.env.HOST || "localhost";
+
+const handleGetRequests = require("./routeHandlers/routeHandlerGet")(
+  __dirname,
+  dataStorage
+);
 
 const server = http.createServer(async (req, res) => {
   try {
     switch (req.method.toUpperCase()) {
       case "GET":
-        // handleGetRequests(req, res);
+        handleGetRequests(req, res);
         break;
 
       case "POST":

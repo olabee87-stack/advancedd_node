@@ -26,11 +26,24 @@ module.exports = (baseDir, dataStorage) => {
     try {
       if (route === "/") {
         send(res, await read(menuPath));
+      } else if (route === "/all") {
+        const result = await dataStorage.getAll(); //prints the json on the browser
+        sendJson(res, result);
+      } else if (isIn(route, ...resourcePaths)) {
+        const result = await read(path.join(baseDir, route));
+        send(res, result);
+      } else if (isIn(route, ...Object.keys(webPages))) {
+        const result = await read(
+          path.join(baseDir, "webPages", webPages[route])
+        );
+        send(res, result);
       } else {
         writeLog(`Get route ${route} not found`);
+        res.end();
       }
     } catch (error) {
       writeLog("Not found: " + error.message);
+      res.end();
     }
   };
 };
