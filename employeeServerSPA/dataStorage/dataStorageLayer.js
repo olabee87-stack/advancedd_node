@@ -49,6 +49,17 @@ module.exports = class Datastorage {
     return [];
   }
 
+  //@call from the insert statement below
+  addToStorage(employee) {
+    const result = this.getFromStorage(+employee.employeeId); //getfromstorage takes only the id
+    if (result.length === 0) {
+      this.storage.push(employee);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   //@'public' API
   getAll() {
     return new Promise(async (resolve) => {
@@ -65,6 +76,19 @@ module.exports = class Datastorage {
         resolve(result);
       } else {
         resolve({ message: "not found" });
+      }
+    });
+  }
+
+  //@checks if employee exists or add a new one
+  insert(employee) {
+    return new Promise(async (resolve) => {
+      await this.readStorage(); //read the storage -line 43
+      if (this.addToStorage(employee)) {
+        await this.writeStorage();
+        resolve({ message: "Successfully inserted a field!" });
+      } else {
+        resolve({ message: "Employee already exists" });
       }
     });
   }
