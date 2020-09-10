@@ -60,6 +60,28 @@ module.exports = class Datastorage {
     }
   }
 
+  //@find one employee and remove where the id matches
+  deleteFromStorage(id) {
+    for (let i = 0; i < this.storage.length; i++) {
+      if (this.storage[i].employeeId == +id) {
+        this.storage.splice(i, 1); //remove one element in this position
+        return true;
+      }
+    }
+    return false;
+  }
+
+  //@update employee if the id matches, else, return false
+  updateStorage(employee) {
+    for (let i = 0; i < this.storage.length; i++) {
+      if (this.storage[i].employeeId == +employee.employeeId) {
+        Object.assign(this.storage[i], employee);
+        return true;
+      }
+    }
+    return false; //no employee with the given id
+  }
+
   //@'public' API
   getAll() {
     return new Promise(async (resolve) => {
@@ -89,6 +111,32 @@ module.exports = class Datastorage {
         resolve({ message: "Successfully inserted a field!" });
       } else {
         resolve({ message: "Employee already exists" });
+      }
+    });
+  }
+
+  //@delete an employee
+  remove(employeeId) {
+    return new Promise(async (resolve) => {
+      await this.readStorage();
+      if (this.deleteFromStorage(employeeId)) {
+        await this.writeStorage();
+        resolve({ message: "One entry deleted!" });
+      } else {
+        resolve({ message: "Unable to delete user" });
+      }
+    });
+  }
+
+  //@update employee
+  update(employee) {
+    return new Promise(async (resolve) => {
+      await this.readStorage();
+      if (this.updateStorage(employee)) {
+        await this.writeStorage();
+        resolve({ message: "Field successfully updated!" });
+      } else {
+        resolve({ message: "Could not update field!" });
       }
     });
   }
