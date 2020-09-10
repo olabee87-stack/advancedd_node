@@ -13,7 +13,7 @@ module.exports = class Datastorage {
     fs.readFile(storageFile, (err, data) => {
       if (err) {
         this.storage = {};
-      } else this.storage = JSON.parse(data);
+      } else this.storage = JSON.parse(data); //convert object from buffer to json
     });
   }
 
@@ -23,7 +23,7 @@ module.exports = class Datastorage {
       const data = await read(storageFile);
       this.storage = JSON.parse(data.fileData);
     } catch (err) {
-      // writeLog(err.message)
+      writeLog(err.message);
     }
   }
 
@@ -35,7 +35,7 @@ module.exports = class Datastorage {
         flag: "w",
       });
     } catch (err) {
-      // writeLog(err.message)
+      writeLog(err.message);
     }
   }
 

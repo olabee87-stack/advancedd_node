@@ -1,31 +1,44 @@
+"use strict";
+
+const http = require("http");
+const fs = require("fs");
+
 const Datastorage = require("./dataStorage/dataStorageLayer");
 
 const dataStorage = new Datastorage();
 
-dataStorage.getAll().then((result) => console.log(result));
+//Global logger - Creates a log file in the app
+const output = fs.createWriteStream("./logfile.log"); //appears when you writeLog()
+const { Console } = require("console");
+global.writeLog = new Console({ stdout: output, stderr: output }).log; //everythig
+//################
 
-dataStorage.get(1).then((result) => console.log(result));
+const port = process.env.PORT || 3006;
 
-dataStorage.get(100).then((result) => console.log(result));
+const host = process.env.HOST || "localhost";
 
-// const newEmployee = {
-//   employeeId: 4,
-//   firstname: "  Mary",
-//   lastname: "Stormy",
-//   department: "food",
-//   salary: 9000,
-// };
+const server = http.createServer(async (req, res) => {
+  try {
+    switch (req.method.toUpperCase()) {
+      case "GET":
+        // handleGetRequests(req, res);
+        break;
 
-// dataStorage.insert(newEmployee).then((result) => console.log(result));
+      case "POST":
+        // handlePostRequests(req, res);
+        break;
 
-// dataStorage.remove(4).then((result) => console.log(result));
+      default:
+        writeLog("Method not used ");
+        res.end();
+    }
+  } catch (error) {
+    writeLog(error.message);
+    res.end();
+  }
+});
 
-const updatedEmployee = {
-  employeeId: 4,
-  firstname: "  Maryx",
-  lastname: "Stormyx",
-  department: "foodx",
-  salary: 9000,
-};
-
-dataStorage.update(updatedEmployee).then((result) => console.log(result));
+server.listen(port, host, () =>
+  writeLog(`Server ${host} started on port ${port}`)
+);
+console.log(`Server ${host} started on port ${port}`);
