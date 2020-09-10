@@ -25,7 +25,7 @@ const read = (filepath) => {
   });
 };
 
-//@optins: {encoding: 'utf8', flag: 'w'}
+//@optins: {encoding: 'utf8', flag: 'w'} - write json to disk
 const write = (filepath, data, options) => {
   return new Promise(async (resolve, reject) => {
     try {

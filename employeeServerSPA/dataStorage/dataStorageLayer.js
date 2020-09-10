@@ -60,7 +60,7 @@ module.exports = class Datastorage {
   get(id) {
     return new Promise(async (resolve) => {
       await this.readStorage();
-      const result = this.getFromStorage(id);
+      const result = this.getFromStorage(id); //from line 43
       if (result.length > 0) {
         resolve(result);
       } else {
