@@ -3,11 +3,18 @@
 const functions = require("../sumFunction");
 
 describe("Test if functions are defined", () => {
+  //sum
   test("function sum is defined", () => {
     expect(functions.sum).toBeDefined();
   });
+
+  //subtraction
+  test("function subtract is defined", () => {
+    expect(functions.subtract).toBeDefined();
+  });
 });
 
+//test that numbers are integers
 describe("test sum with integer testcases", () => {
   const testCases = [
     [1, 1, 2],
@@ -27,6 +34,7 @@ describe("test sum with integer testcases", () => {
   });
 });
 
+//test if input is not a float
 describe("test sum with floating point testcases", () => {
   const testCases = [
     [10, 11.5, 21.5],
@@ -42,6 +50,7 @@ describe("test sum with floating point testcases", () => {
   });
 });
 
+//@check if paramaters are missing - sum
 describe("Missing parameters", () => {
   const testCases = [
     [null, "parameter missing"],
@@ -58,6 +67,7 @@ describe("Missing parameters", () => {
   );
 });
 
+//@check if paramaters are not numbers - sum
 describe("Parameters are not numbers", () => {
   const testCases = [
     ["a", 2, "only numbers allowed"],
@@ -77,12 +87,8 @@ describe("Parameters are not numbers", () => {
 });
 
 //@SUBTRACTION TEST
-describe("Test if functions are defined", () => {
-  test("function subtract is defined", () => {
-    expect(functions.subtract).toBeDefined();
-  });
-});
 
+//@check if parameters are missing - subtraction
 describe("Missing Parameters", () => {
   const testCases = [
     [null, "parameter missing"],
@@ -99,7 +105,7 @@ describe("Missing Parameters", () => {
   );
 });
 
-//@ subtract - paraeters are not numbers
+//@ subtract -check if parameters are not numbers
 
 describe("Parameters are not numbers", () => {
   const testCases = [
