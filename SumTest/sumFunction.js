@@ -45,4 +45,5 @@ exports.division = (a, b) => {
   if (Number.isNaN(Number(a) || Number.isNaN(Number(b)))) {
     throw new Error("Only numbers allowed");
   }
+  return a / b;
 };
