@@ -19,7 +19,7 @@ describe("Test if functions are defined", () => {
   });
 });
 
-//test that numbers are integers
+//@SUM TEST - test that numbers are integers
 describe("test sum with integer testcases", () => {
   const testCases = [
     [1, 1, 2],
@@ -34,7 +34,6 @@ describe("test sum with integer testcases", () => {
     [-3, 0, -3],
   ];
 
-  //sum
   test.each(testCases)("sum(%s, %s) = %s", (a, b, expected) => {
     expect(functions.sum(a, b)).toBe(expected);
   });
@@ -51,13 +50,12 @@ describe("test sum with floating point testcases", () => {
     [2.4, -2.5, -0.1],
   ];
 
-  //sum
   test.each(testCases)("sum(%s, %s) = %s", (a, b, expected) => {
     expect(functions.sum(a, b)).toBeCloseTo(expected);
   });
 });
 
-//@check if parameters are missing - sum
+//@SUM - check if parameters are missing
 describe("Missing parameters", () => {
   const testCases = [
     [null, "parameter missing"],
@@ -74,7 +72,7 @@ describe("Missing parameters", () => {
   );
 });
 
-//@check if paramaters are not numbers - sum
+//@SUM check if paramaters are not numbers
 describe("Parameters are not numbers", () => {
   const testCases = [
     ["a", 2, "only numbers allowed"],
