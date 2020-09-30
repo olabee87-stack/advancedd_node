@@ -12,6 +12,11 @@ describe("Test if functions are defined", () => {
   test("function subtract is defined", () => {
     expect(functions.subtract).toBeDefined();
   });
+
+  //division
+  test("function division is defined", () => {
+    expect(functions.division).toBeDefined();
+  });
 });
 
 //test that numbers are integers
@@ -29,6 +34,7 @@ describe("test sum with integer testcases", () => {
     [-3, 0, -3],
   ];
 
+  //sum
   test.each(testCases)("sum(%s, %s) = %s", (a, b, expected) => {
     expect(functions.sum(a, b)).toBe(expected);
   });
@@ -45,12 +51,13 @@ describe("test sum with floating point testcases", () => {
     [2.4, -2.5, -0.1],
   ];
 
+  //sum
   test.each(testCases)("sum(%s, %s) = %s", (a, b, expected) => {
     expect(functions.sum(a, b)).toBeCloseTo(expected);
   });
 });
 
-//@check if paramaters are missing - sum
+//@check if parameters are missing - sum
 describe("Missing parameters", () => {
   const testCases = [
     [null, "parameter missing"],
@@ -121,6 +128,44 @@ describe("Parameters are not numbers", () => {
     "subtract(%s,%s) throws an exception %s",
     (a, b, expected) => {
       expect(() => functions.subtract(a, b).toThrow(expected));
+    }
+  );
+});
+
+//@DIVISION TEST
+
+describe("Missing Parameters", () => {
+  const testCases = [
+    [null, "parameter missing"],
+    [1, "parameter missing"],
+    ["a", "parameter missing"],
+    ["", "parameter missing"],
+  ];
+
+  test.each(testCases)(
+    "division(%s) throws an exception: %s",
+    (testValue, expected) => {
+      expect(() => functions.division(testValue).toThrow(expected));
+    }
+  );
+});
+
+//@ division -check if parameters are not numbers
+
+describe("Parameters are not numbers", () => {
+  const testCases = [
+    ["a", 2, "only nmbers are allowed"],
+    [1, "a", "only numbers are allowed"],
+    ["a", "b", "only numbers are allowed"],
+    ["", "", "only numbers are allowed"],
+    [null, 1, "only numbers are allowed"],
+    [undefined, 1, "only numbers are allowed"],
+  ];
+
+  test.each(testCases)(
+    "division(%s,%s) throws an exception %s",
+    (a, b, expected) => {
+      expect(() => functions.division(a, b).toThrow(expected));
     }
   );
 });
