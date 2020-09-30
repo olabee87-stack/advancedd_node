@@ -9,6 +9,7 @@ const { read } = require("../library/fileHandler");
 
 const resourcePaths = ["/favicon", "/styles/", "/images/", "/js/"];
 
+//@webpages to serve
 const webPages = {
   "/getAllPage": "getAll.html",
   "/getOnePage": "getOne.html",
@@ -27,7 +28,7 @@ module.exports = (baseDir, dataStorage) => {
       if (route === "/") {
         send(res, await read(menuPath));
       } else if (route === "/all") {
-        const result = await dataStorage.getAll(); //prints the json on the browser
+        const result = await dataStorage.getAll(); //prints the json to the browser
         sendJson(res, result);
       } else if (isIn(route, ...resourcePaths)) {
         const result = await read(path.join(baseDir, route));

@@ -1,0 +1,28 @@
+{
+  "host": "localhost",
+  "port": 3306,
+  "admin": "root",
+  "adminpassword": "Citrogbentrome1!",
+  "user": "zeke",
+  "userpassword": "secret",
+  "dropUser": true,
+  "debug": true,
+  "database": "employeedb",
+  "tables": [
+    {
+      "tableName": "employee",
+      "columns": [
+        "employeeId INTEGER NOT NULL PRIMARY KEY",
+        "firstname VARCHAR(20) NOT NULL",
+        "lastname VARCHAR(30) NOT NULL",
+        "department VARCHAR(15)",
+        "salary DECIMAL(6,2)"
+      ],
+      "data": [
+        [1, "Leila", "Hökki", "ict", 5000],
+        [2, "Matt", "River", "admin", 3000],
+        [3, "Tommy", "McFlurry", "admin", 3000]
+      ]
+    }
+  ]
+}

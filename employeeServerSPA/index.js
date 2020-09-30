@@ -21,6 +21,11 @@ const handleGetRequests = require("./routeHandlers/routeHandlerGet")(
   dataStorage
 );
 
+const handlePostRequests = require("./routeHandlers/routeHandlerPost")(
+  __dirname,
+  dataStorage
+);
+
 const server = http.createServer(async (req, res) => {
   try {
     switch (req.method.toUpperCase()) {
@@ -29,7 +34,7 @@ const server = http.createServer(async (req, res) => {
         break;
 
       case "POST":
-        // handlePostRequests(req, res);
+        handlePostRequests(req, res);
         break;
 
       default:

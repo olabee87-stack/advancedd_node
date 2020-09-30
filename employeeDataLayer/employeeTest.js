@@ -33,12 +33,12 @@ async function run() {
 
     // @INSERT into table
     //NOTE - Line 36.. Get an ID first then proceed to insert
-    // const person = await db.get(60);
-    // person.employeeId = 60;
-    // person.firstname = "Delete";
-    // person.lastname = "Practice";
+    // const person = await db.get(77);
+    // person.employeeId = 77;
+    // person.firstname = "Justine";
+    // person.lastname = "McHunter";
     // person.department = "perfection";
-    // person.salary = 2000;
+    // person.salary = 5000;
     // console.log(await db.insert(person));
 
     //@RETURN all values for each entry in an object format
@@ -54,7 +54,7 @@ async function run() {
     // console.log(await db.update(person));
 
     //@DELETE an entry
-    console.log(await db.remove(60));
+    // console.log(await db.remove(60));
 
     // console.log(await db.getAll());
   } catch (err) {

@@ -1,5 +1,7 @@
 "use strict";
+
 const mysql = require("mysql");
+
 const DatabaseSuper = require("./database");
 module.exports = class TransactionDatabase extends DatabaseSuper {
   constructor(options) {
@@ -33,4 +35,27 @@ module.exports = class TransactionDatabase extends DatabaseSuper {
       }
     });
   }
+
+  //   doTransaction(sqlStatementsInArray) {
+  //     return new Promise(async (resolve, reject) => {
+  //       let connection;
+  //       try {
+  //         connection = await mysql.createConnection(this.options);
+  //         await connection.beginTransaction();
+  //         const results = [];
+  //         for (let query of sqlStatementsInArray) {
+  //           results.push(
+  //             await this.doQuery(query.sql, query.parameters, connection) //doQuery is from dd cos it's a superclass
+  //           );
+  //         }
+  //         await connection.commit();
+  //         resolve(result);
+  //       } catch (error) {
+  //         if (connection) connection.rollback();
+  //         reject(new Error("Rollback SQL error: ", err.message));
+  //       } finally {
+  //         if (connection) connection.end(); //null if no connection creation
+  //       }
+  //     });
+  //   }
 };

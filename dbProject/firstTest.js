@@ -3,16 +3,16 @@
 const MySQL = require("./database");
 
 const options = {
-  host: "localhost", //Mariadb host
-  port: 3306, //Mariadb port
+  host: "localhost", //sql host
+  port: 3306, //sqldb port
   user: "zeke",
   password: "secret", //never use password as a clear text
   database: "employeedb",
 };
 
-//Creating an instance of Maria db and taking the declared options as a parameter
+//Creating an instance of SQL db and taking the declared options as a parameter
 const db = new MySQL(options);
-// console.log("db", db.options);
+// console.log("db", db.options);exite
 
 (async () => {
   try {
@@ -29,7 +29,7 @@ const db = new MySQL(options);
     // console.log(deleteResult);
 
     const status = await db.doQuery("insert into employee values(?,?,?,?,?)", [
-      136,
+      138,
       "Will",
       "River",
       "admin",

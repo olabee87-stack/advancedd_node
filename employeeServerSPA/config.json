@@ -1,0 +1,31 @@
+{
+  "logfile": {
+    "filename": "logfile.log",
+    "flags": "a"
+  },
+  "datastorage": {
+    "dataStorageFolder": "datastorage",
+    "dataStorageName": "sqlDatastorage",
+    "dataLayer": "dataStorageLayer.js"
+  },
+  "port": 3006,
+  "host": "localhost",
+  "libraryFolder": "library",
+  "requestHandler": "requestHandler.js",
+  "fileHandler": "fileHandler.js",
+  "errorCodeFolder": "library",
+  "errorCodes": "errorCodes.js",
+  "routeHandlers": "routeHandlers",
+  "getHandlers": "routeHandlerGet.js",
+  "postHandlers": "routeHandlerPost.js",
+  "resourcePaths": ["/favicon", "/styles/", "/images/", "/js/"],
+  "webPages": {
+    "/getAllPage": "getAll.html",
+    "/getOnePage": "getOne.html",
+    "/insertPage": "insert.html",
+    "/deletePage": "delete.html",
+    "/updatePage": "update.html"
+  },
+  "webPagesFolder": "webPages",
+  "menuFile": "menu.html"
+}
