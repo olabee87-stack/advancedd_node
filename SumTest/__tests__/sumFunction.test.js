@@ -93,6 +93,46 @@ describe("Parameters are not numbers", () => {
 
 //@SUBTRACTION TEST
 
+//test integers - subtraction
+describe("test subtract with integer testcases", () => {
+  const testCases = [
+    [1, 1, 0],
+    [2, 3, -1],
+    [-2, -4, 2],
+    [-2, 4, -6],
+    [2, -4, 6],
+    [0, 0, 0],
+    [0, 3, -3],
+    [3, 0, 3],
+    [0, -3, 3],
+    [-3, 0, -3],
+  ];
+
+  test.each(testCases)("subtract(%s, %s) = %s", (a, b, expected) => {
+    expect(functions.subtract(a, b)).toBe(expected);
+  });
+});
+
+//test floating numbers - subtraction
+describe("test subtract with floating point testcases", () => {
+  const testCases = [
+    [10, 11.5, -1.5],
+    [2.5, 3, -0.5],
+    [-2.5, 3, -5.5],
+    [3, -2.5, 5.5],
+    [-3, 2.5, -5.5],
+    [-3, -2.5, -0.5],
+    [-2.5, -2.5, 0],
+    [2.5, 2.5, 0],
+    [-2.5, 2.5, -5],
+    [2.4, -2.5, 4.9],
+  ];
+
+  test.each(testCases)("subtract(%s, %s) = %s", (a, b, expected) => {
+    expect(functions.subtract(a, b)).toBeCloseTo(expected);
+  });
+});
+
 //@check if parameters are missing - subtraction
 describe("Missing Parameters", () => {
   const testCases = [
@@ -132,6 +172,43 @@ describe("Parameters are not numbers", () => {
 
 //@DIVISION TEST
 
+// describe("test division with integer testcases", () => {
+//   const testCases = [
+//     [1, 1, 0],
+//     [2, 3, -1],
+//     [-2, -4, 2],
+//     [-2, 4, -6],
+//     [2, -4, 6],
+//     [0, 0, 0],
+//     [0, 3, -3],
+//     [3, 0, 3],
+//     [0, -3, 3],
+//     [-3, 0, -3],
+//   ];
+
+//   test.each(testCases)("division(%s, %s) = %s", (a, b, expected) => {
+//     expect(functions.division(a, b)).toBe(expected);
+//   });
+// });
+
+describe("test division with floating point testcases", () => {
+  const testCases = [
+    [1, 2, 0.5],
+    [4, 2, 2],
+    [-4, 2, -2],
+    [4, -2, -2],
+    [-4, -2, 2],
+    [3, 3, 1],
+    [2.5, 3.5, 2.5 / 3.5],
+    [2.5, 3, 0.83],
+  ];
+
+  test.each(testCases)("division(%s, %s) = %s", (a, b, expected) => {
+    expect(functions.division(a, b)).toBeCloseTo(expected);
+  });
+});
+
+//test if paramaters are missing - division
 describe("Missing Parameters", () => {
   const testCases = [
     [null, "parameter missing"],
