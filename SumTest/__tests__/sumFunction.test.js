@@ -171,27 +171,7 @@ describe("Parameters are not numbers", () => {
 });
 
 //@DIVISION TEST
-
-// describe("test division with integer testcases", () => {
-//   const testCases = [
-//     [1, 1, 0],
-//     [2, 3, -1],
-//     [-2, -4, 2],
-//     [-2, 4, -6],
-//     [2, -4, 6],
-//     [0, 0, 0],
-//     [0, 3, -3],
-//     [3, 0, 3],
-//     [0, -3, 3],
-//     [-3, 0, -3],
-//   ];
-
-//   test.each(testCases)("division(%s, %s) = %s", (a, b, expected) => {
-//     expect(functions.division(a, b)).toBe(expected);
-//   });
-// });
-
-describe("test division with floating point testcases", () => {
+describe("test division common cases", () => {
   const testCases = [
     [1, 2, 0.5],
     [4, 2, 2],
